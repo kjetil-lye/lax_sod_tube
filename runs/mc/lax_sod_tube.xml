@@ -13,7 +13,7 @@
   <flux>hll3</flux>
   <endTime>1.5</endTime>
   <equation>euler1</equation>
-  <reconstruction>weno2</reconstruction>
+  <reconstruction>wenof2</reconstruction>
   <cfl>0.25</cfl>
   <integrator>rungekutta2</integrator>
   <equationParameters>

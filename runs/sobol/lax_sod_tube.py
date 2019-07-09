@@ -1,4 +1,4 @@
-epsilon = 0.1
+epsilon = 0.5
 
 def scale(y, a, b):
     return a*(1-y) + (b-a)*y
