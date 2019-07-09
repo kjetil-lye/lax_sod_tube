@@ -8,7 +8,7 @@ module load eth_proxy
 
 
 # Get the image
-bsub -J "singularity_pull" -n 1 -R light -R singularity "singularity pull docker://kjetilly/lax_sod_tube:latest"
+bsub -J "singularity_pull" -n 1 -R light -R singularity "singularity pull docker://kjetilly/sodshocktube:latest"
 
 # Generate the runs
 all_jobs=""
@@ -18,7 +18,7 @@ do
     do
 	# See also https://www-01.ibm.com/support/docview.wss?uid=isg3T1013867
 	jobname=${sampling_method}_${resolution}
-        bsub -J "${jobname}" -w "done(singularity_pull)" -W 120:00 -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/lax_sod_tube:latest /bin/bash /lax_sod_tube_for_ml/runs/run_configurations_from_docker.sh ${resolution} ${sampling_method}"
+        bsub -J "${jobname}" -w "done(singularity_pull)" -W 120:00 -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/sodshocktube:latest /bin/bash /lax_sod_tube_for_ml/runs/run_configurations_from_docker.sh ${resolution} ${sampling_method}"
 
 	if [ -z "${all_jobs}" ]; # First time, all_jobs is the empty string
 	then
@@ -31,8 +31,8 @@ do
 done
 
 # Compute the functionals
-bsub -w "${all_jobs}" -W 24:00 -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/lax_sod_tube:latest /bin/bash /lax_sod_tube_for_ml/functionals/generate_functionals_from_docker.sh"
+bsub -w "${all_jobs}" -W 24:00 -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/sodshocktube:latest /bin/bash /lax_sod_tube_for_ml/functionals/generate_functionals_from_docker.sh"
 
 
 # Extract the parameters
-bsub -w "${all_jobs}" -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/lax_sod_tube:latest /bin/bash /lax_sod_tube_for_ml/parameters/generate_parameters_from_docker.sh"
+bsub -w "${all_jobs}" -n 1  -R singularity "singularity exec -B $(pwd):/lax_sod_tube_for_ml docker://kjetilly/sodshocktube:latest /bin/bash /lax_sod_tube_for_ml/parameters/generate_parameters_from_docker.sh"
