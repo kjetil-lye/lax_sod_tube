@@ -1,0 +1,55 @@
+<config>
+<fvm>
+  <name>
+    sodtube
+  </name>
+  <platform>cpu</platform>
+  <grid>
+    <lowerCorner>-5 0 0</lowerCorner>
+    <upperCorner>5 0 0</upperCorner>
+    <dimension>4096 1 1</dimension>
+  </grid>
+  <boundary>neumann</boundary>
+  <flux>hll3</flux>
+  <endTime>1.5</endTime>
+  <equation>euler1</equation>
+  <reconstruction>weno2</reconstruction>
+  <cfl>0.25</cfl>
+  <integrator>rungekutta2</integrator>
+  <equationParameters>
+      <gamma>1.4</gamma>
+  </equationParameters>
+  <initialData>
+    <python>lax_sod_tube.py</python>
+    <parameters>
+      <parameter>
+        <name>X</name>
+        <length>6</length>
+        <values><value>0</value></values>
+      </parameter>
+    </parameters>
+  </initialData>
+    <diffusion>
+        <name>none</name>
+        <reconstruction>none</reconstruction>
+    </diffusion>
+  <writer>
+    <type>netcdf</type>
+    <basename>lax_sod_tube</basename>
+    <numberOfSaves>1</numberOfSaves>
+  </writer>
+</fvm>
+<uq>
+  <samples>16384</samples>
+  <generator>auto</generator>
+  <parameters>
+    <parameter>
+      <name>X</name>
+      <length>6</length>
+      <type>uniform</type>
+    </parameter>
+  </parameters>
+  <stats>
+  </stats>
+</uq>
+</config>
