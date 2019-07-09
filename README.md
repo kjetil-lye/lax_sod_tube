@@ -2,7 +2,7 @@
 
 To checkout this repository, do
 
-    git clone --recursive git@github.com:kjetil-lye/sodshocktube_for_ml.git
+    git clone --recursive git@github.com:kjetil-lye/sod_lax_tube.git
 
 make sure your ssh keys are added to github!
 
