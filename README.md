@@ -1,4 +1,6 @@
-# Generating QMC and MC data for the sodshocktube
+# Generating QMC and MC data for the Lax Sod Shock Tube
+
+This initial data is a stochastic initial data for the Burgers' equation that encapsulates both the Sod Shock Tube and the Lax Shock Tube.
 
 To checkout this repository, do
 
