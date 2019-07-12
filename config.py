@@ -1,5 +1,5 @@
 import numpy as np
-resolutions = 2**np.arange(4,13)
+resolutions = 2**np.arange(5,13)
 bases = {'sobol':'sobol/lax_sod_tube.xml',
          'mc': 'mc/lax_sod_tube.xml'}
 samples = 2*8192
