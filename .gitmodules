@@ -3,4 +3,4 @@
 	url = https://github.com/alsvinn/alsvinn.git
 [submodule "qmc_generators"]
 	path = qmc_generators
-	url = git@github.com:kjetil-lye/qmc_generators.git
+	url = git@github.com:alsvinn/qmc_generators.git
